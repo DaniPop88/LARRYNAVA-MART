@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Larry Nava Family Mart | Bagong Silang, Caloocan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Larry Nava Family Mart: Bagong Silang's trusted Filipino boutique store. Shop essentials, snacks, home goods, and seasonal promos in Caloocan City.">
+    <link rel="icon" href="image/FAVICON.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+2:700|Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #0C8A4A;
+            --brand-red: #E53935;
+            --brand-pink: #F48FB1;
+            --brand-bg: #F9F9F9;
+            --brand-light: #FFF;
+            --brand-accent: #FFECB3;
+            --font-title: 'Baloo 2', 'Roboto', Arial, sans-serif;
+            --font-body: 'Roboto', Arial, sans-serif;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--brand-bg);
+            color: #212121;
+            font-family: var(--font-body);
+            min-height: 100vh;
+            width: 100vw;
+        }
+        header {
+            background: var(--brand-light);
+            box-shadow: 0 1px 8px rgba(12,138,74,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+        .logo-area img {
+            height: 72px;
+            width: 72px;
+            margin-left: 2rem;
+            margin-right: 1rem;
+            background: transparent;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .brand-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--brand-red);
+            font-weight: 700;
+            margin-bottom: -0.2rem;
+        }
+        .brand-subtitle {
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            color: var(--brand-green);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        nav {
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            display: inline-block;
+            text-decoration: none;
+            font-family: var(--font-title);
+            color: var(--brand-green);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin: 0 0.9rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover {
+            background: var(--brand-accent);
+            color: var(--brand-red);
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.2rem 1.2rem 0 1.2rem;
+        }
+        .hero-section {
+            background: linear-gradient(100deg, var(--brand-green) 70%, var(--brand-accent) 100%);
+            border-radius: 18px;
+            color: var(--brand-light);
+            box-shadow: 0 8px 24px rgba(12,138,74,0.10);
+            padding: 2.6rem 2.1rem 2rem 2.1rem;
+            margin-bottom: 2.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-content {
+            max-width: 600px;
+        }
+        .hero-section h1 {
+            font-family: var(--font-title);
+            font-size: 2.7rem;
+            letter-spacing: 2px;
+            color: var(--brand-pink);
+            margin-bottom: 0.7rem;
+        }
+        .hero-section p {
+            font-size: 1.17rem;
+            margin-bottom: 0.7rem;
+        }
+        .hero-section strong {
+            color: var(--brand-accent);
+        }
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            color: var(--brand-green);
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .about-section, .products-section, .contact-section, .testimonials-section, .faq-section, .delivery-section {
+            background: var(--brand-light);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(12,138,74,0.07);
+            margin-bottom: 2.1rem;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+        }
+        .about-section ul {
+            margin: 0.7rem 0 0 1.2rem;
+            padding: 0;
+        }
+        .about-section li {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .products-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1.2rem;
+        }
+        .product-card {
+            background: var(--brand-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(229,57,53,0.04);
+            padding: 1rem 0.7rem 1.2rem 0.7rem;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-card img {
+            width: 92px;
+            height: 92px;
+            object-fit: contain;
+            margin-bottom: 0.55rem;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .product-card h4 {
+            margin: 0.6rem 0 0.4rem 0;
+            font-size: 1.13rem;
+            color: var(--brand-green);
+            font-family: var(--font-title);
+            font-weight: 700;
+        }
+        .product-desc {
+            font-size: 0.99rem;
+            margin-bottom: 0.42rem;
+            color: #444;
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--brand-red);
+            margin-bottom: 0.3rem;
+        }
+        .product-stock {
+            font-size: 0.92rem;
+            color: #555;
+            margin-bottom: 0.7rem;
+        }
+        .add-to-cart {
+            background: var(--brand-red);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.62rem 1.1rem;
+            cursor: pointer;
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+        .add-to-cart:hover {
+            background: #ab1e1e;
+        }
+        .cart-toggle {
+            position: fixed;
+            top: 28px;
+            right: 28px;
+            background: var(--brand-red);
+            border: none;
+            color: #fff;
+            padding: 0.55rem 1.05rem;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-size: 1.12rem;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 1100;
+            box-shadow: 0 4px 16px rgba(229,57,53,0.11);
+            display: flex;
+            align-items: center;
+            transition: right 0.2s, bottom 0.2s, top 0.2s;
+        }
+        .burger-toggle {
+            position: fixed;
+            top: 28px;
+            right: 90px;
+            background: var(--brand-green);
+            border: none;
+            color: #fff;
+            width: 46px;
+            height: 46px;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 1101;
+            box-shadow: 0 4px 16px rgba(12,138,74,0.11);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(33,33,33,0.30);
+            display: none;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-popup {
+            background: var(--brand-light);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(12,138,74,0.18);
+            padding: 2rem 1.7rem 1.5rem 1.7rem;
+            min-width: 320px;
+            max-width: 96vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .cart-popup-header {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--brand-green);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .cart-popup-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart-popup-list li {
+            padding: 0.44rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        .cart-popup-list button {
+            background: none;
+            border: none;
+            color: var(--brand-red);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .cart-popup-total {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--brand-red);
+            font-size: 1.08rem;
+            text-align: right;
+        }
+        .cart-popup-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 1.3rem;
+        }
+        .cart-popup-close {
+            background: var(--brand-accent);
+            color: var(--brand-green);
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.3rem;
+            font-size: 1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            margin-right: 0.7rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .cart-popup-close:hover {
+            background: #ffd25e;
+        }
+        .cart-popup-checkout {
+            background: var(--brand-green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.3rem;
+            font-size: 1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .cart-popup-checkout:hover {
+            background: #0a6d3b;
+        }
+        .cart-section {
+            position: fixed;
+            top: 78px;
+            right: 30px;
+            width: 320px;
+            background: var(--brand-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(12,138,74,0.16);
+            padding: 1.2rem 1rem 1.2rem 1rem;
+            z-index: 1000;
+            max-height: 74vh;
+            overflow-y: auto;
+            display: none;
+        }
+        .cart-header {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--brand-green);
+            font-size: 1.15rem;
+            margin-bottom: 0.77rem;
+        }
+        .cart-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart-list li {
+            padding: 0.44rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.01rem;
+        }
+        .cart-list button {
+            background: none;
+            border: none;
+            color: var(--brand-red);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .cart-total {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--brand-red);
+            font-size: 1.04rem;
+        }
+        .checkout-btn {
+            width: 100%;
+            background: var(--brand-green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem;
+            margin-top: 1.18rem;
+            font-size: 1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .checkout-btn:hover {
+            background: #0a6d3b;
+        }
+        .delivery-section ul {
+            margin: 0.9rem 0 0 1.1rem;
+            padding: 0;
+        }
+        .delivery-section li {
+            font-size: 1.07rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-section a {
+            color: var(--brand-red);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+        .testimonials-section blockquote {
+            background: var(--brand-accent);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 0.7rem 0 1.1rem 0;
+            font-size: 1.07rem;
+            font-style: italic;
+            color: #444;
+        }
+        .testimonials-section span {
+            color: var(--brand-green);
+            font-weight: 700;
+        }
+        .faq-section ul {
+            margin: 0.9rem 0 0 1.1rem;
+            padding: 0;
+        }
+        .faq-section li {
+            font-size: 1.07rem;
+            margin-bottom: 0.6rem;
+        }
+        footer {
+            background: var(--brand-green);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0 1.15rem 0;
+            margin-top: 2.4rem;
+        }
+        .footer-links a {
+            color: var(--brand-red);
+            text-decoration: none;
+            margin: 0 1.1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-info {
+            margin-top: 0.7rem;
+            font-size: 1.03rem;
+        }
+        .footer-meta {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            margin-top: 0.7rem;
+            margin-bottom: 0.6rem;
+        }
+        @media (max-width: 900px) {
+            header { flex-direction: column; align-items: flex-start; padding: 0.7rem 0; }
+            .logo-area img { margin-left: 1rem; }
+            nav { margin-right: 1rem; margin-top: 0.7rem; }
+            .main-container { padding: 1.1rem 0.8rem 0 0.8rem; }
+            .hero-section { flex-direction: column; padding: 1.3rem 1.3rem; }
+            .cart-section { width: 94vw; left: 3vw; right: 3vw; top: 74px; }
+            .cart-toggle { right: 10px; }
+            .burger-toggle { right: 72px; }
+        }
+        @media (max-width: 600px) {
+            .logo-area img { height: 54px; width: 54px; margin-left: 0.5rem; margin-right: 0.5rem; }
+            .brand-title { font-size: 1.37rem; }
+            .brand-subtitle { font-size: 0.97rem; }
+            .main-container { padding: 0.1rem 0.3rem 0 0.3rem; }
+            .hero-section { padding: 1.1rem 0.5rem; }
+            .about-section, .products-section, .contact-section, .testimonials-section, .faq-section, .delivery-section {
+                padding: 1rem 0.5rem 0.8rem 0.5rem;
+            }
+            .products-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.7rem;}
+            .product-card img { width: 60px; height: 60px; }
+            .section-title { font-size: 1.11rem; }
+            .cart-section { width: 98vw; left: 1vw; right: 1vw; top: 60px; }
+            .footer-links a { margin: 0 0.45rem; font-size: 0.97rem;}
+            footer { padding: 1.2rem 0 0.8rem 0;}
+            .cart-toggle {
+                position: fixed;
+                right: 18px;
+                bottom: 18px;
+                top: auto;
+                box-shadow: 0 4px 16px rgba(229,57,53,0.18);
+                padding: 0.65rem 1.15rem;
+                font-size: 1.12rem;
+            }
+            .burger-toggle {
+                display: flex !important;
+                position: fixed;
+                top: 18px;
+                right: 18px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.45rem;
+                padding: 0;
+            }
+            nav {
+                display: none !important;
+                flex-direction: column;
+                width: 100%;
+                background: var(--brand-light);
+                position: fixed;
+                top: 60px;
+                left: 0;
+                box-shadow: 0 2px 12px rgba(12,138,74,0.07);
+                z-index: 999;
+            }
+            nav.open {
+                display: flex !important;
+            }
+            nav a {
+                margin: 1rem 0.5rem;
+                padding: 0.6rem 1rem;
+                font-size: 1.05rem;
+                border-radius: 6px;
+                width: 90vw;
+                text-align: left;
+            }
+            .cart-popup {
+                min-width: 90vw;
+                max-width: 98vw;
+                padding: 1.2rem 0.6rem 1.2rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="logo-area">
+            <img src="image/LOGO.png" alt="Larry Nava Family Mart Logo">
+            <div class="brand-text">
+                <span class="brand-title">LARRY NAVA</span>
+                <span class="brand-subtitle">FAMILY MART</span>
+            </div>
+        </div>
+        <!-- Burger Button for Mobile -->
+        <button class="burger-toggle" id="burger-toggle" aria-label="Menu" onclick="toggleMenu()" style="display:none;">
+            &#9776;
+        </button>
+        <nav id="main-nav">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#delivery">Delivery & Pickup</a>
+            <a href="#faq">FAQ</a>
+            <a href="#testimonials">Testimonials</a>
+        </nav>
+    </header>
+    <!-- Cart Toggle Button -->
+    <button class="cart-toggle" id="cart-toggle-btn" onclick="openCartPopup()">🛒 Cart (<span id="cart-count">0</span>)</button>
+    <!-- Cart Pop-up Overlay -->
+    <div class="cart-popup-overlay" id="cart-popup-overlay">
+        <div class="cart-popup" id="cart-popup">
+            <div class="cart-popup-header">Total Belanja Anda</div>
+            <ul class="cart-popup-list" id="cart-popup-list"></ul>
+            <div class="cart-popup-total" id="cart-popup-total"></div>
+            <div class="cart-popup-actions">
+                <button class="cart-popup-close" onclick="closeCartPopup()">Close</button>
+                <button class="cart-popup-checkout" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Section (legacy, hidden) -->
+    <div class="cart-section" id="cart-section" style="display:none;">
+        <div class="cart-header">Your Cart</div>
+        <ul class="cart-list" id="cart-list"></ul>
+        <div class="cart-total" id="cart-total">Total: ₱0.00</div>
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- HERO Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <h1>Welcome to Larry Nava Family Mart</h1>
+                <p>Your friendly neighborhood convenience store in Bagong Silang!</p>
+                <p>Located in the heart of Caloocan City, Larry Nava Family Mart is your go-to destination for everyday essentials, Filipino snacks, household goods, and seasonal items. We take pride in serving the community with affordable, quality products and a warm, family-friendly environment. Whether you're picking up a quick merienda or doing your weekly grocery haul, we’re here for you — <strong>sulit at maasahan!</strong></p>
+                <p>Come visit us at <strong>#88 Ligaya Street, Barangay 178, Bagong Silang</strong>, and discover why we’re one of Caloocan’s most trusted family marts.</p>
+            </div>
+        </section>
+        <!-- ABOUT Section -->
+        <section class="about-section" id="about">
+            <div class="section-title">Our Story</div>
+            <p>Founded by Larry Nava in 2017, Larry Nava Family Mart was built with a simple mission — to serve the local community with heart and honesty. What started as a small sari-sari store has grown into a full-service boutique mart that still holds onto its humble roots.</p>
+            <p>We are proud to be locally owned and operated, with a strong focus on community support, Filipino values, and personalized customer service. Our team is composed of friendly staff from the neighborhood who understand your needs and are always happy to help.</p>
+            <div style="margin-top:1rem;">
+                <strong>Our Vision</strong><br>
+                To become a trusted neighborhood staple for every Filipino family looking for quality, affordability, and convenience.
+            </div>
+            <div style="margin-top:1rem;">
+                <strong>Our Values</strong>
+                <ul>
+                    <li>✔️ Serbisyo una sa lahat</li>
+                    <li>✔️ Tiwala ng komunidad ay mahalaga</li>
+                    <li>✔️ Suporta sa lokal na produkto at negosyo</li>
+                </ul>
+            </div>
+        </section>
+        <!-- PRODUCTS Section -->
+        <section class="products-section" id="products">
+            <div class="section-title">What We Offer</div>
+            <div class="products-list">
+                <!-- Grocery Essentials -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Premium Rice">
+                    <h4>Premium Rice</h4>
+                    <div class="product-desc">Locally sourced, fluffy and fragrant.</div>
+                    <div class="product-price">₱49.00 / kg</div>
+                    <div class="product-stock">Qty: 30</div>
+                    <button class="add-to-cart" onclick="addToCart('Premium Rice', 49, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Canned Sardines">
+                    <h4>Canned Sardines</h4>
+                    <div class="product-desc">Classic Filipino favorite, easy to prepare.</div>
+                    <div class="product-price">₱27.50</div>
+                    <div class="product-stock">Qty: 18</div>
+                    <button class="add-to-cart" onclick="addToCart('Canned Sardines', 27.5, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Instant Noodles">
+                    <h4>Instant Noodles</h4>
+                    <div class="product-desc">Quick, tasty merienda for all ages.</div>
+                    <div class="product-price">₱11.00</div>
+                    <div class="product-stock">Qty: 40</div>
+                    <button class="add-to-cart" onclick="addToCart('Instant Noodles', 11, 1)">Add to Cart</button>
+                </div>
+                <!-- Drinks & Refreshments -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Soft Drinks">
+                    <h4>Soft Drinks</h4>
+                    <div class="product-desc">Ice-cold, refreshing cola and fruit flavors.</div>
+                    <div class="product-price">₱18.00</div>
+                    <div class="product-stock">Qty: 25</div>
+                    <button class="add-to-cart" onclick="addToCart('Soft Drinks', 18, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Instant Coffee">
+                    <h4>Instant Coffee</h4>
+                    <div class="product-desc">Wake up with a hot cup, creamy and aromatic.</div>
+                    <div class="product-price">₱6.50</div>
+                    <div class="product-stock">Qty: 50</div>
+                    <button class="add-to-cart" onclick="addToCart('Instant Coffee', 6.5, 1)">Add to Cart</button>
+                </div>
+                <!-- Snacks & Pastries -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Piattos Chips">
+                    <h4>Piattos Chips</h4>
+                    <div class="product-desc">Crispy, flavorful Filipino snack.</div>
+                    <div class="product-price">₱27.00</div>
+                    <div class="product-stock">Qty: 22</div>
+                    <button class="add-to-cart" onclick="addToCart('Piattos Chips', 27, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Boy Bawang Cornick">
+                    <h4>Boy Bawang Cornick</h4>
+                    <div class="product-desc">Garlicky, crunchy, loved by all ages.</div>
+                    <div class="product-price">₱14.50</div>
+                    <div class="product-stock">Qty: 31</div>
+                    <button class="add-to-cart" onclick="addToCart('Boy Bawang Cornick', 14.5, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Fresh Pandesal">
+                    <h4>Fresh Pandesal</h4>
+                    <div class="product-desc">Soft, warm bread from local bakeries daily.</div>
+                    <div class="product-price">₱2.50 each</div>
+                    <div class="product-stock">Qty: 40</div>
+                    <button class="add-to-cart" onclick="addToCart('Fresh Pandesal', 2.5, 1)">Add to Cart</button>
+                </div>
+                <!-- Personal Care -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Shampoo Sachet">
+                    <h4>Shampoo Sachet</h4>
+                    <div class="product-desc">For silky smooth, fresh hair daily.</div>
+                    <div class="product-price">₱6.00</div>
+                    <div class="product-stock">Qty: 35</div>
+                    <button class="add-to-cart" onclick="addToCart('Shampoo Sachet', 6, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Bath Soap">
+                    <h4>Bath Soap</h4>
+                    <div class="product-desc">Gentle cleansing, leaves skin fresh.</div>
+                    <div class="product-price">₱18.00</div>
+                    <div class="product-stock">Qty: 29</div>
+                    <button class="add-to-cart" onclick="addToCart('Bath Soap', 18, 1)">Add to Cart</button>
+                </div>
+                <!-- Home Supplies -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Laundry Detergent">
+                    <h4>Laundry Detergent</h4>
+                    <div class="product-desc">Removes stains, fresh fragrance.</div>
+                    <div class="product-price">₱39.00</div>
+                    <div class="product-stock">Qty: 20</div>
+                    <button class="add-to-cart" onclick="addToCart('Laundry Detergent', 39, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Dishwashing Liquid">
+                    <h4>Dishwashing Liquid</h4>
+                    <div class="product-desc">Effective grease remover, lemon scent.</div>
+                    <div class="product-price">₱24.00</div>
+                    <div class="product-stock">Qty: 15</div>
+                    <button class="add-to-cart" onclick="addToCart('Dishwashing Liquid', 24, 1)">Add to Cart</button>
+                </div>
+                <!-- Seasonal Promos -->
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="Pasko Bundle">
+                    <h4>Pasko Bundle</h4>
+                    <div class="product-desc">Holiday pack: snacks & goodies for sharing.</div>
+                    <div class="product-price">₱199.00</div>
+                    <div class="product-stock">Qty: 7</div>
+                    <button class="add-to-cart" onclick="addToCart('Pasko Bundle', 199, 1)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="image/placeholder.png" alt="School Opening Kit">
+                    <h4>School Opening Kit</h4>
+                    <div class="product-desc">Essentials for back-to-school, all in one pack.</div>
+                    <div class="product-price">₱129.00</div>
+                    <div class="product-stock">Qty: 10</div>
+                    <button class="add-to-cart" onclick="addToCart('School Opening Kit', 129, 1)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+        <!-- DELIVERY Section -->
+        <section class="delivery-section" id="delivery">
+            <div class="section-title">Delivery & Pickup Info</div>
+            <ul>
+                <li><strong>Delivery Areas:</strong> Barangay 178, Bagong Silang</li>
+                <li><strong>Minimum Order:</strong> ₱500</li>
+                <li><strong>Cut-off Time:</strong> 3:00 PM for same-day delivery</li>
+                <li><strong>Pickup Orders:</strong> Order ahead and pick up at our shop. No waiting time, just text or call us.</li>
+            </ul>
+        </section>
+        <!-- CONTACT Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-title">Contact Us</div>
+            <p><strong>Address:</strong><br>
+            Larry Nava Family Mart<br>
+            #88 Ligaya Street, Barangay 178<br>
+            Bagong Silang, Caloocan City<br>
+            National Capital Region, Philippines 1428
+            </p>
+            <p><strong>Phone:</strong> <a href="tel:+639619847265">+63 961 984 7265</a></p>
+            <p><strong>Email:</strong> <a href="mailto:contact@larrynava-mart.com">contact@larrynava-mart.com</a></p>
+            <p><strong>Website:</strong> <a href="https://www.larrynava-mart.com" target="_blank">www.larrynava-mart.com</a></p>
+            <p><strong>Business Hours:</strong><br>
+            Monday to Saturday: 8:00 AM – 6:00 PM<br>
+            Sunday: Closed (for family day and restocking)</p>
+            <p><strong>Follow us on Facebook:</strong> <a href="https://www.facebook.com/" target="_blank">Larry Nava Family Mart Facebook</a></p>
+        </section>
+        <!-- TESTIMONIALS Section -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="section-title">What Our Customers Are Saying</div>
+            <blockquote>
+                <p>“Napaka-convenient! Malinis ang tindahan at sobrang bait ng staff.”<br>
+                <span>– Tita Marites, Barangay 178 resident</span></p>
+            </blockquote>
+            <blockquote>
+                <p>“I love how they support local products. Bumibili ako ng kakanin dito tuwing Sabado!”<br>
+                <span>– Jerome, tricycle driver</span></p>
+            </blockquote>
+            <blockquote>
+                <p>“Hindi ko na kailangan pumunta sa mall. Kumpleto na dito sa Larry Nava Family Mart!”<br>
+                <span>– Aira, working student</span></p>
+            </blockquote>
+        </section>
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="section-title">Frequently Asked Questions (FAQ)</div>
+            <ul>
+                <li><strong>Q: Do you accept GCash or card payments?</strong><br>
+                    A: Yes, we accept GCash and PayMaya. Card payments (Visa/Mastercard) are accepted for purchases above ₱300.
+                </li>
+                <li><strong>Q: Do you deliver?</strong><br>
+                    A: We offer limited same-day delivery within Barangay 178 for orders over ₱500. Just message us on Facebook or call to place your order.
+                </li>
+                <li><strong>Q: Are your prices updated regularly?</strong><br>
+                    A: Yes, we monitor market prices weekly to offer competitive and affordable rates.
+                </li>
+                <li><strong>Q: Do you offer reseller discounts?</strong><br>
+                    A: Yes! Message us directly for bulk pricing and reseller packages.
+                </li>
+            </ul>
+        </section>
+    </main>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            |
+            <a href="terms.html">Terms of Service</a>
+            |
+            <a href="refund-policy.html">Refund Policy</a>
+        </div>
+        <div class="footer-info">
+            Larry Nava Family Mart &mdash; #88 Ligaya Street, Barangay 178, Bagong Silang, Caloocan City, NCR, Philippines 1428<br>
+            Phone: +63 961 984 7265 &nbsp;|&nbsp; Email: contact@larrynava-mart.com
+        </div>
+        <div class="footer-meta">
+            Locally owned and operated &nbsp;|&nbsp; Registered sole proprietorship<br>
+            TIN/BIR VAT ID available upon request &nbsp;|&nbsp; Established 2017
+        </div>
+        <div style="margin-top:0.7rem;font-size:0.95rem;">
+            &copy; 2025 Larry Nava Family Mart. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        let cart = [];
+
+        function addToCart(name, price, qty) {
+            let item = cart.find(i => i.name === name);
+            if(item) {
+                item.qty += qty;
+            } else {
+                cart.push({name, price, qty});
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            // For cart count (header/cart-toggle button)
+            const cartCount = document.getElementById('cart-count');
+            let count = 0;
+            let total = 0;
+            cart.forEach(item => {
+                count += item.qty;
+                total += item.price * item.qty;
+            });
+            cartCount.textContent = count;
+
+            // For legacy (hidden) cart-section
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+            if(cartList) {
+                cartList.innerHTML = '';
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${item.name} (${item.qty})</span> 
+                        <span>₱${(item.price * item.qty).toFixed(2)}</span>
+                        <button onclick="removeFromCart('${item.name}')">✖</button>`;
+                    cartList.appendChild(li);
+                });
+            }
+            if(cartTotal) {
+                cartTotal.textContent = `Total: ₱${total.toFixed(2)}`;
+            }
+
+            // For popup
+            const popupList = document.getElementById('cart-popup-list');
+            const popupTotal = document.getElementById('cart-popup-total');
+            if(popupList) {
+                popupList.innerHTML = '';
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${item.name} (${item.qty})</span> 
+                        <span>₱${(item.price * item.qty).toFixed(2)}</span>
+                        <button onclick="removeFromCart('${item.name}')">✖</button>`;
+                    popupList.appendChild(li);
+                });
+            }
+            if(popupTotal) {
+                popupTotal.textContent = `Total: ₱${total.toFixed(2)}`;
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(i => i.name !== name);
+            updateCart();
+        }
+
+        function openCartPopup() {
+            updateCart();
+            document.getElementById('cart-popup-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartPopup() {
+            document.getElementById('cart-popup-overlay').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function checkout() {
+            closeCartPopup();
+            window.location.href = "order-summary.html";
+        }
+
+        // Burger Menu functionality
+        function toggleMenu() {
+            var nav = document.getElementById('main-nav');
+            if (nav.classList.contains('open')) {
+                nav.classList.remove('open');
+            } else {
+                nav.classList.add('open');
+            }
+        }
+        function closeMenu() {
+            document.getElementById('main-nav').classList.remove('open');
+        }
+
+        // Show burger button only on mobile, handle nav visibility & cart toggle move
+        function handleResponsiveNav() {
+            var burger = document.getElementById('burger-toggle');
+            var nav = document.getElementById('main-nav');
+            var cartBtn = document.getElementById('cart-toggle-btn');
+            if(window.innerWidth <= 600) {
+                burger.style.display = 'flex';
+                nav.classList.remove('open');
+                nav.style.display = 'none';
+                cartBtn.style.position = 'fixed';
+                cartBtn.style.right = '18px';
+                cartBtn.style.bottom = '18px';
+                cartBtn.style.top = 'auto';
+            } else {
+                burger.style.display = 'none';
+                nav.classList.remove('open');
+                nav.style.display = 'flex';
+                cartBtn.style.position = 'fixed';
+                cartBtn.style.right = '28px';
+                cartBtn.style.top = '28px';
+                cartBtn.style.bottom = 'auto';
+            }
+        }
+
+        window.addEventListener('resize', handleResponsiveNav);
+        window.addEventListener('DOMContentLoaded', function() {
+            handleResponsiveNav();
+            updateCart();
+            // Close menu when clicking outside nav on mobile
+            document.body.addEventListener('click', function(e){
+                var nav = document.getElementById('main-nav');
+                var burger = document.getElementById('burger-toggle');
+                var popup = document.getElementById('cart-popup');
+                var overlay = document.getElementById('cart-popup-overlay');
+                if(window.innerWidth <= 600) {
+                    if(nav.classList.contains('open')) {
+                        if (!nav.contains(e.target) && e.target !== burger) {
+                            closeMenu();
+                        }
+                    }
+                }
+                // Close popup when clicking overlay outside popup
+                if (overlay.style.display === 'flex') {
+                    if (!popup.contains(e.target) && e.target !== document.getElementById('cart-toggle-btn')) {
+                        closeCartPopup();
+                    }
+                }
+            });
+            // Close menu when link clicked
+            var navLinks = document.querySelectorAll('#main-nav a');
+            navLinks.forEach(function(link){
+                link.addEventListener('click', function(){
+                    if(window.innerWidth <= 600){
+                        closeMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
