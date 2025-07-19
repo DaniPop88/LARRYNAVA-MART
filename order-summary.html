@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Summary | Larry Nava Family Mart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review and confirm your order at Larry Nava Family Mart. See your order summary, provide delivery details, and complete your purchase securely.">
+    <link rel="icon" href="image/FAVICON.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+2:700|Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #0C8A4A;
+            --brand-red: #E53935;
+            --brand-pink: #F48FB1;
+            --brand-bg: #F9F9F9;
+            --brand-light: #FFF;
+            --brand-accent: #FFECB3;
+            --font-title: 'Baloo 2', 'Roboto', Arial, sans-serif;
+            --font-body: 'Roboto', Arial, sans-serif;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--brand-bg);
+            color: #212121;
+            font-family: var(--font-body);
+            min-height: 100vh;
+            width: 100vw;
+        }
+        header {
+            background: var(--brand-light);
+            box-shadow: 0 1px 8px rgba(12,138,74,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+        .logo-area img {
+            height: 56px;
+            width: 56px;
+            margin-left: 1.2rem;
+            margin-right: 1rem;
+            background: transparent;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .brand-title {
+            font-family: var(--font-title);
+            font-size: 1.45rem;
+            letter-spacing: 1px;
+            color: var(--brand-red);
+            font-weight: 700;
+            margin-bottom: -0.2rem;
+        }
+        .brand-subtitle {
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            color: var(--brand-green);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        main {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+        .summary-container {
+            background: var(--brand-light);
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(12,138,74,0.10);
+            padding: 2rem 1.3rem 2rem 1.3rem;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-family: var(--font-title);
+            color: var(--brand-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.1rem;
+            text-align: left;
+        }
+        .order-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.1rem;
+        }
+        .order-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 0.7rem 0;
+            font-size: 1.07rem;
+        }
+        .order-total {
+            font-weight: bold;
+            color: var(--brand-red);
+            font-size: 1.12rem;
+            text-align: right;
+            margin-top: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        form {
+            margin-top: 1.7rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            font-weight: 500;
+            color: var(--brand-green);
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            margin-bottom: 0.2rem;
+            background: var(--brand-bg);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--brand-green);
+        }
+        .checkout-btn {
+            width: 100%;
+            background: var(--brand-green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.3rem;
+            transition: background 0.2s;
+        }
+        .checkout-btn:hover {
+            background: #0a6d3b;
+        }
+        .confirmation {
+            background: var(--brand-accent);
+            border-radius: 12px;
+            padding: 1.3rem 1rem;
+            color: #212121;
+            font-size: 1.09rem;
+            margin-top: 1.7rem;
+            box-shadow: 0 2px 8px rgba(12,138,74,0.07);
+        }
+        .confirmation strong {
+            color: var(--brand-green);
+        }
+        footer {
+            background: var(--brand-green);
+            color: #fff;
+            text-align: center;
+            padding: 1.4rem 0 1rem 0;
+            margin-top: 2.1rem;
+            font-size: 1rem;
+        }
+        .footer-links a {
+            color: var(--brand-red);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            header {
+                padding: 0.3rem 0;
+            }
+            .logo-area img {
+                height: 40px;
+                width: 40px;
+                margin-left: 0.7rem;
+                margin-right: 0.6rem;
+            }
+            .brand-title {
+                font-size: 1.05rem;
+            }
+            .brand-subtitle {
+                font-size: 0.82rem;
+            }
+            main {
+                padding: 1rem 0.2rem 0.7rem 0.2rem;
+            }
+            .summary-container {
+                padding: 1.1rem 0.4rem 1.1rem 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="image/LOGO.png" alt="Larry Nava Family Mart Logo">
+            <div class="brand-text">
+                <span class="brand-title">LARRY NAVA</span>
+                <span class="brand-subtitle">FAMILY MART</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="summary-container">
+            <div class="section-title">Your Order Overview</div>
+            <ul class="order-list" id="order-list">
+                <!-- Order items will be injected here by script -->
+            </ul>
+            <div class="order-total" id="order-total"></div>
+            <form id="order-form" autocomplete="on">
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Mobile Number</label>
+                    <input type="tel" id="customer-phone" name="customerPhone" required pattern="^(09|\+639)\d{9}$">
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Delivery Address</label>
+                    <textarea id="customer-address" name="customerAddress" required rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="delivery-method">Delivery Method</label>
+                    <select id="delivery-method" name="deliveryMethod" required>
+                        <option value="">Select</option>
+                        <option value="pickup">Pickup at Store</option>
+                        <option value="delivery">Delivery (Barangay 178 only)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Preferred Payment Method</label>
+                    <select id="payment-method" name="paymentMethod" required>
+                        <option value="">Select</option>
+                        <option value="gcash">GCash</option>
+                        <option value="paymaya">PayMaya</option>
+                        <option value="card">Debit/Credit Card</option>
+                        <option value="cash">Cash on Delivery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="order-notes">Additional Notes <span style="color:#aaa;font-size:0.95em;">(Optional)</span></label>
+                    <textarea id="order-notes" name="orderNotes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="checkout-btn">Submit Order</button>
+            </form>
+            <div class="confirmation" id="confirmation" style="display:none;">
+                <strong>Order Received!</strong><br><br>
+                Thank you for placing your order with Larry Nava Family Mart.<br>
+                One of our team members will soon contact you to verify your order details, including product availability and preferences such as color or flavor. Please confirm these details when contacted.<br><br>
+                After your confirmation, we will send you a secure payment link based on your chosen payment method. Kindly complete the payment within <strong>24 hours</strong> to avoid automatic cancellation.<br>
+                If you have any questions or need assistance, feel free to reach out.<br><br>
+                <strong>We appreciate your trust and look forward to serving you!</strong>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
+            <a href="refund-policy.html">Refund Policy</a>
+        </div>
+        <div style="margin-top:0.8rem;">
+            Larry Nava Family Mart &mdash; #88 Ligaya Street, Barangay 178, Bagong Silang, Caloocan City, NCR, Philippines 1428<br>
+            Phone: +63 961 984 7265 &nbsp;|&nbsp; Email: contact@larrynava-mart.com
+        </div>
+        <div style="margin-top:0.3rem;font-size:0.95rem;">
+            Locally owned and operated &nbsp;|&nbsp; Registered sole proprietorship &nbsp;|&nbsp; Established 2017
+        </div>
+        <div style="margin-top:0.5rem;font-size:0.95rem;">
+            &copy; 2025 Larry Nava Family Mart. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Sample order data for demonstration. In production, replace with actual order data from cart/session.
+        var orderItems = [
+            { name: "Premium Rice", qty: 2, price: 49 },
+            { name: "Piattos Chips", qty: 3, price: 27 },
+            { name: "Instant Coffee", qty: 1, price: 6.5 }
+        ];
+
+        function renderOrderSummary() {
+            var list = document.getElementById('order-list');
+            var totalDiv = document.getElementById('order-total');
+            list.innerHTML = '';
+            let total = 0;
+            orderItems.forEach(function(item) {
+                let li = document.createElement('li');
+                li.innerHTML = `<span>${item.name}</span><span>Qty: ${item.qty} &nbsp;|&nbsp; ₱${(item.price * item.qty).toFixed(2)}</span>`;
+                list.appendChild(li);
+                total += item.qty * item.price;
+            });
+            totalDiv.textContent = 'Order Total: ₱' + total.toFixed(2);
+        }
+        renderOrderSummary();
+
+        document.getElementById('order-form').addEventListener('submit', function(e){
+            e.preventDefault();
+            // Could validate and send data here!
+            document.getElementById('order-form').style.display = 'none';
+            document.getElementById('confirmation').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
