@@ -213,35 +213,36 @@
         }
         .cart-toggle {
             position: fixed;
-            top: 28px;
-            right: 28px;
+            right: 24px;
+            bottom: 32px;
+            top: auto;
             background: var(--brand-red);
             border: none;
             color: #fff;
-            padding: 0.55rem 1.05rem;
+            padding: 0.75rem 1.35rem;
             border-radius: 50px;
             font-family: var(--font-title);
-            font-size: 1.12rem;
+            font-size: 1.18rem;
             font-weight: 700;
             cursor: pointer;
             z-index: 1100;
-            box-shadow: 0 4px 16px rgba(229,57,53,0.11);
+            box-shadow: 0 4px 16px rgba(229,57,53,0.18);
             display: flex;
             align-items: center;
             transition: right 0.2s, bottom 0.2s, top 0.2s;
         }
         .burger-toggle {
             position: fixed;
-            top: 28px;
-            right: 90px;
+            top: 24px;
+            right: 32px;
             background: var(--brand-green);
             border: none;
             color: #fff;
-            width: 46px;
-            height: 46px;
+            width: 42px;
+            height: 42px;
             border-radius: 50px;
             font-family: var(--font-title);
-            font-size: 1.6rem;
+            font-size: 1.55rem;
             font-weight: 700;
             cursor: pointer;
             z-index: 1101;
@@ -348,17 +349,6 @@
             background: #0a6d3b;
         }
         .cart-section {
-            position: fixed;
-            top: 78px;
-            right: 30px;
-            width: 320px;
-            background: var(--brand-light);
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(12,138,74,0.16);
-            padding: 1.2rem 1rem 1.2rem 1rem;
-            z-index: 1000;
-            max-height: 74vh;
-            overflow-y: auto;
             display: none;
         }
         .cart-header {
@@ -482,9 +472,15 @@
             nav { margin-right: 1rem; margin-top: 0.7rem; }
             .main-container { padding: 1.1rem 0.8rem 0 0.8rem; }
             .hero-section { flex-direction: column; padding: 1.3rem 1.3rem; }
-            .cart-section { width: 94vw; left: 3vw; right: 3vw; top: 74px; }
-            .cart-toggle { right: 10px; }
-            .burger-toggle { right: 72px; }
+            .cart-popup {min-width: 90vw; max-width: 98vw;}
+            .burger-toggle {
+                top: 20px;
+                right: 24px;
+            }
+            .cart-toggle {
+                right: 18px;
+                bottom: 24px;
+            }
         }
         @media (max-width: 600px) {
             .logo-area img { height: 54px; width: 54px; margin-left: 0.5rem; margin-right: 0.5rem; }
@@ -498,60 +494,21 @@
             .products-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.7rem;}
             .product-card img { width: 60px; height: 60px; }
             .section-title { font-size: 1.11rem; }
-            .cart-section { width: 98vw; left: 1vw; right: 1vw; top: 60px; }
             .footer-links a { margin: 0 0.45rem; font-size: 0.97rem;}
             footer { padding: 1.2rem 0 0.8rem 0;}
-            .cart-toggle {
-                position: fixed;
-                right: 18px;
-                bottom: 18px;
-                top: auto;
-                box-shadow: 0 4px 16px rgba(229,57,53,0.18);
-                padding: 0.65rem 1.15rem;
-                font-size: 1.12rem;
-            }
+            .cart-popup {min-width: 90vw; max-width: 98vw; padding: 1.2rem 0.6rem 1.2rem 0.6rem;}
             .burger-toggle {
-                display: flex !important;
-                position: fixed;
-                top: 18px;
-                right: 18px;
-                width: 38px;
-                height: 38px;
-                font-size: 1.45rem;
-                padding: 0;
+                top: 16px;
+                right: 16px;
             }
-            nav {
-                display: none !important;
-                flex-direction: column;
-                width: 100%;
-                background: var(--brand-light);
-                position: fixed;
-                top: 60px;
-                left: 0;
-                box-shadow: 0 2px 12px rgba(12,138,74,0.07);
-                z-index: 999;
-            }
-            nav.open {
-                display: flex !important;
-            }
-            nav a {
-                margin: 1rem 0.5rem;
-                padding: 0.6rem 1rem;
-                font-size: 1.05rem;
-                border-radius: 6px;
-                width: 90vw;
-                text-align: left;
-            }
-            .cart-popup {
-                min-width: 90vw;
-                max-width: 98vw;
-                padding: 1.2rem 0.6rem 1.2rem 0.6rem;
+            .cart-toggle {
+                right: 12px;
+                bottom: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Logo and Navigation -->
     <header>
         <div class="logo-area">
             <img src="image/LOGO.png" alt="Larry Nava Family Mart Logo">
@@ -560,7 +517,6 @@
                 <span class="brand-subtitle">FAMILY MART</span>
             </div>
         </div>
-        <!-- Burger Button for Mobile -->
         <button class="burger-toggle" id="burger-toggle" aria-label="Menu" onclick="toggleMenu()" style="display:none;">
             &#9776;
         </button>
@@ -574,9 +530,7 @@
             <a href="#testimonials">Testimonials</a>
         </nav>
     </header>
-    <!-- Cart Toggle Button -->
     <button class="cart-toggle" id="cart-toggle-btn" onclick="openCartPopup()">🛒 Cart (<span id="cart-count">0</span>)</button>
-    <!-- Cart Pop-up Overlay -->
     <div class="cart-popup-overlay" id="cart-popup-overlay">
         <div class="cart-popup" id="cart-popup">
             <div class="cart-popup-header">Total Belanja Anda</div>
@@ -588,16 +542,13 @@
             </div>
         </div>
     </div>
-    <!-- Cart Section (legacy, hidden) -->
     <div class="cart-section" id="cart-section" style="display:none;">
         <div class="cart-header">Your Cart</div>
         <ul class="cart-list" id="cart-list"></ul>
         <div class="cart-total" id="cart-total">Total: ₱0.00</div>
         <button class="checkout-btn" onclick="checkout()">Checkout</button>
     </div>
-    <!-- Main Content -->
     <main class="main-container">
-        <!-- HERO Section -->
         <section class="hero-section" id="home">
             <div class="hero-content">
                 <h1>Welcome to Larry Nava Family Mart</h1>
@@ -606,7 +557,6 @@
                 <p>Come visit us at <strong>#88 Ligaya Street, Barangay 178, Bagong Silang</strong>, and discover why we’re one of Caloocan’s most trusted family marts.</p>
             </div>
         </section>
-        <!-- ABOUT Section -->
         <section class="about-section" id="about">
             <div class="section-title">Our Story</div>
             <p>Founded by Larry Nava in 2017, Larry Nava Family Mart was built with a simple mission — to serve the local community with heart and honesty. What started as a small sari-sari store has grown into a full-service boutique mart that still holds onto its humble roots.</p>
@@ -624,11 +574,9 @@
                 </ul>
             </div>
         </section>
-        <!-- PRODUCTS Section -->
         <section class="products-section" id="products">
             <div class="section-title">What We Offer</div>
             <div class="products-list">
-                <!-- Grocery Essentials -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Premium Rice">
                     <h4>Premium Rice</h4>
@@ -653,7 +601,6 @@
                     <div class="product-stock">Qty: 40</div>
                     <button class="add-to-cart" onclick="addToCart('Instant Noodles', 11, 1)">Add to Cart</button>
                 </div>
-                <!-- Drinks & Refreshments -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Soft Drinks">
                     <h4>Soft Drinks</h4>
@@ -670,7 +617,6 @@
                     <div class="product-stock">Qty: 50</div>
                     <button class="add-to-cart" onclick="addToCart('Instant Coffee', 6.5, 1)">Add to Cart</button>
                 </div>
-                <!-- Snacks & Pastries -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Piattos Chips">
                     <h4>Piattos Chips</h4>
@@ -695,7 +641,6 @@
                     <div class="product-stock">Qty: 40</div>
                     <button class="add-to-cart" onclick="addToCart('Fresh Pandesal', 2.5, 1)">Add to Cart</button>
                 </div>
-                <!-- Personal Care -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Shampoo Sachet">
                     <h4>Shampoo Sachet</h4>
@@ -712,7 +657,6 @@
                     <div class="product-stock">Qty: 29</div>
                     <button class="add-to-cart" onclick="addToCart('Bath Soap', 18, 1)">Add to Cart</button>
                 </div>
-                <!-- Home Supplies -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Laundry Detergent">
                     <h4>Laundry Detergent</h4>
@@ -729,7 +673,6 @@
                     <div class="product-stock">Qty: 15</div>
                     <button class="add-to-cart" onclick="addToCart('Dishwashing Liquid', 24, 1)">Add to Cart</button>
                 </div>
-                <!-- Seasonal Promos -->
                 <div class="product-card">
                     <img src="image/placeholder.png" alt="Pasko Bundle">
                     <h4>Pasko Bundle</h4>
@@ -748,7 +691,6 @@
                 </div>
             </div>
         </section>
-        <!-- DELIVERY Section -->
         <section class="delivery-section" id="delivery">
             <div class="section-title">Delivery & Pickup Info</div>
             <ul>
@@ -758,7 +700,6 @@
                 <li><strong>Pickup Orders:</strong> Order ahead and pick up at our shop. No waiting time, just text or call us.</li>
             </ul>
         </section>
-        <!-- CONTACT Section -->
         <section class="contact-section" id="contact">
             <div class="section-title">Contact Us</div>
             <p><strong>Address:</strong><br>
@@ -775,7 +716,6 @@
             Sunday: Closed (for family day and restocking)</p>
             <p><strong>Follow us on Facebook:</strong> <a href="https://www.facebook.com/" target="_blank">Larry Nava Family Mart Facebook</a></p>
         </section>
-        <!-- TESTIMONIALS Section -->
         <section class="testimonials-section" id="testimonials">
             <div class="section-title">What Our Customers Are Saying</div>
             <blockquote>
@@ -791,7 +731,6 @@
                 <span>– Aira, working student</span></p>
             </blockquote>
         </section>
-        <!-- FAQ Section -->
         <section class="faq-section" id="faq">
             <div class="section-title">Frequently Asked Questions (FAQ)</div>
             <ul>
@@ -810,7 +749,6 @@
             </ul>
         </section>
     </main>
-    <!-- Footer Section -->
     <footer>
         <div class="footer-links">
             <a href="privacy-policy.html">Privacy Policy</a>
@@ -833,7 +771,6 @@
     </footer>
     <script>
         let cart = [];
-
         function addToCart(name, price, qty) {
             let item = cart.find(i => i.name === name);
             if(item) {
@@ -843,9 +780,7 @@
             }
             updateCart();
         }
-
         function updateCart() {
-            // For cart count (header/cart-toggle button)
             const cartCount = document.getElementById('cart-count');
             let count = 0;
             let total = 0;
@@ -854,7 +789,6 @@
                 total += item.price * item.qty;
             });
             cartCount.textContent = count;
-
             // For legacy (hidden) cart-section
             const cartList = document.getElementById('cart-list');
             const cartTotal = document.getElementById('cart-total');
@@ -871,7 +805,6 @@
             if(cartTotal) {
                 cartTotal.textContent = `Total: ₱${total.toFixed(2)}`;
             }
-
             // For popup
             const popupList = document.getElementById('cart-popup-list');
             const popupTotal = document.getElementById('cart-popup-total');
@@ -889,29 +822,23 @@
                 popupTotal.textContent = `Total: ₱${total.toFixed(2)}`;
             }
         }
-
         function removeFromCart(name) {
             cart = cart.filter(i => i.name !== name);
             updateCart();
         }
-
         function openCartPopup() {
             updateCart();
             document.getElementById('cart-popup-overlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-
         function closeCartPopup() {
             document.getElementById('cart-popup-overlay').style.display = 'none';
             document.body.style.overflow = '';
         }
-
         function checkout() {
             closeCartPopup();
             window.location.href = "order-summary.html";
         }
-
-        // Burger Menu functionality
         function toggleMenu() {
             var nav = document.getElementById('main-nav');
             if (nav.classList.contains('open')) {
@@ -923,8 +850,6 @@
         function closeMenu() {
             document.getElementById('main-nav').classList.remove('open');
         }
-
-        // Show burger button only on mobile, handle nav visibility & cart toggle move
         function handleResponsiveNav() {
             var burger = document.getElementById('burger-toggle');
             var nav = document.getElementById('main-nav');
@@ -933,26 +858,32 @@
                 burger.style.display = 'flex';
                 nav.classList.remove('open');
                 nav.style.display = 'none';
+                burger.style.position = 'fixed';
+                burger.style.top = '16px';
+                burger.style.right = '16px';
                 cartBtn.style.position = 'fixed';
-                cartBtn.style.right = '18px';
-                cartBtn.style.bottom = '18px';
+                cartBtn.style.right = '12px';
+                cartBtn.style.bottom = '16px';
                 cartBtn.style.top = 'auto';
+                cartBtn.style.marginLeft = 'unset';
             } else {
                 burger.style.display = 'none';
                 nav.classList.remove('open');
                 nav.style.display = 'flex';
+                burger.style.position = 'fixed';
+                burger.style.top = '24px';
+                burger.style.right = '32px';
                 cartBtn.style.position = 'fixed';
-                cartBtn.style.right = '28px';
-                cartBtn.style.top = '28px';
-                cartBtn.style.bottom = 'auto';
+                cartBtn.style.right = '24px';
+                cartBtn.style.bottom = '32px';
+                cartBtn.style.top = 'auto';
+                cartBtn.style.marginLeft = 'unset';
             }
         }
-
         window.addEventListener('resize', handleResponsiveNav);
         window.addEventListener('DOMContentLoaded', function() {
             handleResponsiveNav();
             updateCart();
-            // Close menu when clicking outside nav on mobile
             document.body.addEventListener('click', function(e){
                 var nav = document.getElementById('main-nav');
                 var burger = document.getElementById('burger-toggle');
@@ -965,14 +896,12 @@
                         }
                     }
                 }
-                // Close popup when clicking overlay outside popup
                 if (overlay.style.display === 'flex') {
                     if (!popup.contains(e.target) && e.target !== document.getElementById('cart-toggle-btn')) {
                         closeCartPopup();
                     }
                 }
             });
-            // Close menu when link clicked
             var navLinks = document.querySelectorAll('#main-nav a');
             navLinks.forEach(function(link){
                 link.addEventListener('click', function(){
