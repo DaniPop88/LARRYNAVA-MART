@@ -91,3 +91,17 @@ footer { background: var(--chestnut-deep); border-radius: 1.8rem 1.8rem 0 0; }
   .hero-section { border-radius: 1.4rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* === Quick fix 2026-11-07: mobile menu + product photos === */
+html, body { overflow-x: hidden; }
+.product-card img { width: 100% !important; height: auto !important; aspect-ratio: 1 / 1; object-fit: cover !important; padding: 0 !important; display: block; }
+.product-card { display: flex; flex-direction: column; }
+.product-card button { margin-top: auto; }
+@media (max-width: 600px) {
+  header { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; background: #fbf5ea !important; }
+  #main-nav { position: fixed !important; top: 0; left: 0; right: 0; z-index: 1500; margin: 0 !important; padding: 4.5rem 1.5rem 1.5rem; background: #fbf5ea; box-shadow: 0 10px 30px rgba(0,0,0,.15); border-bottom: 1px solid var(--line); }
+  #main-nav.open { display: flex !important; flex-direction: column; align-items: flex-start; gap: .4rem; }
+  #main-nav.open ul, #main-nav.open > * { display: flex; flex-direction: column; gap: .4rem; width: 100%; padding: 0; margin: 0; }
+  #main-nav a { display: block; padding: .6rem 0; font-size: 1rem; }
+  .burger-toggle { z-index: 1600 !important; }
+}
