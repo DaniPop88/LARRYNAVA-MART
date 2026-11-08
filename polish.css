@@ -105,3 +105,23 @@ html, body { overflow-x: hidden; }
   #main-nav a { display: block; padding: .6rem 0; font-size: 1rem; }
   .burger-toggle { z-index: 1600 !important; }
 }
+
+/* === Layout pass 2026-11-07 (v2): centered hero, balanced products, contact cards === */
+.hero-section { display: flex !important; justify-content: center; text-align: center; }
+.hero-content { max-width: 760px !important; margin: 0 auto !important; text-align: center; }
+.hero-content h1 { margin-left: auto; margin-right: auto; }
+.hero-content p { margin-left: auto !important; margin-right: auto !important; }
+/* Products: rows stay centered when the last row is short */
+.products-list { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 1.2rem !important; }
+.products-list .product-card { flex: 0 1 calc(25% - .9rem); min-width: 0; }
+@media (max-width: 1000px) { .products-list .product-card { flex-basis: calc(33.333% - .8rem); } }
+@media (max-width: 760px) { .products-list .product-card { flex-basis: calc(50% - .6rem); } }
+@media (max-width: 480px) { .products-list .product-card { flex-basis: 100%; } }
+/* Contact: info cards in a grid */
+.contact-section { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.contact-section .section-title { grid-column: 1 / -1; margin-bottom: .4rem; }
+.contact-section > p { margin: 0 !important; background: rgba(255,255,255,.06); border-left: 4px solid var(--wheat); border-radius: 0 .9rem .9rem 0; padding: .95rem 1.15rem; line-height: 1.6; }
+.contact-section > p:first-of-type { grid-column: 1 / -1; }
+.contact-section > p strong { display: block; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .2rem; }
+.contact-section > p strong + br { display: none; }
+@media (max-width: 600px) { .contact-section { grid-template-columns: 1fr; } .hero-section { padding: 2rem 1.2rem !important; } }
